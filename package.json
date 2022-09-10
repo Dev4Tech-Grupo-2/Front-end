@@ -63,6 +63,18 @@
     "karma-jasmine-html-reporter": "^1.7.0",
     "protractor": "7.0.0",
     "ts-node": "~10.7.0",
-    "typescript": "~4.4.2"
+    "typescript": "~4.4.2",
+    "gulp": "latest",
+    "gulp-sass": "latest",
+    "gulp-uglify": "latest",
+    "gulp-rename": "latest",
+    "gulp-notify": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-concat": "latest",
+    "gulp-plumber": "latest",
+    "browser-sync": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-clean-css": "latest"
   }
 }

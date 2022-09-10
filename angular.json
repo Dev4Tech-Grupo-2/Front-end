@@ -102,9 +102,12 @@
               "node_modules/bootstrap-notify/bootstrap-notify.js"
             ],
             "styles": [
-              "src/styles.css",
+              
               "src/assets/sass/paper-dashboard.scss",
-              "src/assets/css/demo.css"
+              "src/assets/css/demo.css",
+              "/assets/landing/css/styles-merged.css",
+              "/assets/landing/css/style.min.css",
+              "/assets/landing/css/custom.css"
             ],
             "assets": [
               "src/assets",
