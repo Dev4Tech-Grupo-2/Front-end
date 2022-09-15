@@ -16,6 +16,7 @@ import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { SidebarModule } from './sidebar/sidebar.module';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SidebarModule } from './sidebar/sidebar.module';
     AppComponent,
     AdminLayoutComponent,
     LandingPageComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

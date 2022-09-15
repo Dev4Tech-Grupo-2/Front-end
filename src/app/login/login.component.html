@@ -11,7 +11,9 @@ background-color: rgba(0, 0, 0, 0);
 background-attachment: scroll;
 background-attachment: fixed; height: 100%;
 font-family: Inter,sans-serif;
-font-size: 14px;">
+font-size: 14px;
+width: 100vw;
+height: 100vh;">
 <div class="form-wrapper">
     <div class="container">
         <div class="card" style="border: none;
@@ -23,7 +25,7 @@ font-size: 14px;">
             position: relative;
             z-index: 2;">
                 <div class="logo">
-                    <img src="src/assets/landing/img/logo.png" alt="logo">
+                    <img src="../../assets/landing/img/logo.png" alt="logo">
                 </div>
                 <div class="my-5 text-center">
                     <h3 class="font-weight-bold mb-3">Sign In</h3>
@@ -79,11 +81,11 @@ font-size: 14px;">
                         </div>
                     </div>
                     <div class="form-group text-center">
-                        <button class="btn btn-primary">Sign In</button>
+                        <button class="btn btn-primary" routerLink="/dashboard">Sign In</button>
                     </div>
                     <div class="text-center">
                         Don't have an account?
-                        <a href="sign-up.html" style="color: #3e1981;">Create a free account</a>.
+                        <a  style="color: #3e1981;">Create a free account</a>.
                     </div>
                 </form>
             </div>
