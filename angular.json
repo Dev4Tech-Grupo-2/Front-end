@@ -28,7 +28,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "src/assets/scss/paper-dashboard.scss",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/css/style.css"
+
             ],
             "scripts": []
           },
@@ -103,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2a2f9d04-a051-4db4-87f4-120d7de6b1aa"
   }
 }
