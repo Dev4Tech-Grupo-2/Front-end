@@ -1,3 +1,4 @@
+import { TeacherModule } from './../../features/teacher/teacher.module';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,8 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     NgbModule,
-    StudentModule
+    StudentModule,
+    TeacherModule
   ],
   declarations: [
     UserComponent,
