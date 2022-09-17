@@ -3,12 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routing';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +16,7 @@ import { NavbarModule } from './shared/navbar/navbar.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
+// import { AppRoutes } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -33,9 +32,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(AppRoutes,{
-      useHash: true
-    }),
+    // RouterModule.forRoot(AppRoutes,{
+      
+    // }),
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(),
