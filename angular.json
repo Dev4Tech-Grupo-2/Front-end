@@ -21,13 +21,21 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/assets/login",
+              "src/assets/landing"
             ],
             "styles": [
+              "src/assets/login/dist/vendor/bootstrap-4.5.3/css/bootstrap.min.css",
+              "src/assets/login/dist/icons/material-design-icons/css/mdi.min.css",
+              "src/assets/login/dist/css/latform-style-12.min.css",
+              "src/assets/landing/css/styles-merged.css",
+              "src/assets/landing/css/style.min.css",
+              "src/assets/landing/css/custom.css",
               "node_modules/bootstrap/scss/bootstrap.scss",
               "src/assets/scss/paper-dashboard.scss",
               "node_modules/ngx-toastr/toastr.css",
-              "src/assets/css/demo.css"
+              "src/assets/css/demo.css"              
             ],
             "scripts": []
           },
@@ -101,14 +109,21 @@
               "node_modules/chartist/dist/chartist.js",
               "node_modules/bootstrap-notify/bootstrap-notify.js"
             ],
-            "styles": [
-              "src/styles.css",
+            "styles": [              
+              "src/assets/login/dist/vendor/bootstrap-4.5.3/css/bootstrap.min.css",
+              "src/assets/login/dist/icons/material-design-icons/css/mdi.min.css",
+              "src/assets/login/dist/css/latform-style-12.min.css",
+              "src/assets/landing/css/styles-merged.css",
+              "src/assets/landing/css/style.min.css",
+              "src/assets/landing/css/custom.css",
               "src/assets/sass/paper-dashboard.scss",
               "src/assets/css/demo.css"
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+              "src/assets/login",
+              "src/assets/landing"
             ]
           }
         },
@@ -148,11 +163,10 @@
       }
     }
   },
-  "defaultProject": "pd-free-angularcli",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
