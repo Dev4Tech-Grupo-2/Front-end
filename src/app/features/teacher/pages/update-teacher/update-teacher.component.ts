@@ -1,24 +1,25 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { TeachersService } from './../../../../shared/services/teachers.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Teacher } from './../../model/teacher.model';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { TeachersService } from './../../../../shared/services/teachers.service';
+import { Teacher } from './../../model/teacher.model';
 
 @Component({
-  selector: 'app-create-teacher',
-  templateUrl: './create-teacher.component.html',
-  styleUrls: ['./create-teacher.component.scss']
+  selector: 'app-update-teacher',
+  templateUrl: './update-teacher.component.html',
+  styleUrls: ['./update-teacher.component.scss']
 })
-export class CreateTeacherComponent implements OnInit {
+export class UpdateTeacherComponent implements OnInit {
 
   teachers: Array<Teacher> = [];
   teacher?: Teacher;
-  idTeacher?: number;
+  id?: number;
 
   estaCarregando: boolean;
   erroNoCarregamento: boolean;
 
-  formTeacher: any = new FormGroup({
+  formTeacherUp: any = new FormGroup({
     name: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
@@ -30,51 +31,29 @@ export class CreateTeacherComponent implements OnInit {
 
   });
 
-
   constructor(private router: Router,
     private activedRoute: ActivatedRoute,
     private teachersService: TeachersService) { }
 
-  ngOnInit(): void {
 
-
-
-
+  ngOnInit() {
+    this.id = this.activedRoute.snapshot.params['id'];
+    this.teachersService.getById(this.id).subscribe(teacher => {
+      this.teacher = teacher;
+    });
   }
-
-  estaEditando = () => Boolean(this.idTeacher);
 
 
   onSubmit() {
-
-   this.createTeacher();
-  }
-
-
-  createTeacher() {
-    const formValue = this.formTeacher.value;
-    this.teachersService.create(formValue).subscribe((res) => {
-      this.router.navigateByUrl('/dashboard');
+    this.teachersService.update(this.id, this.formTeacherUp.value).subscribe(res => {
+      alert('Teacher updated successfully!');
+      this.router.navigateByUrl('/dasboard');
     });
-
   }
 
-
-  onSuccessSaveTeacher() {
-    this.router.navigate(['create-teacher']);
+  cancelar(){
+    this.router.navigateByUrl('/dashboard');
   }
-
-
-  onSuccess(response: Teacher[]) {
-    this.teachers = response;
-  }
-
-  onError(error: any) {
-    this.erroNoCarregamento = true;
-    console.error(error);
-  }
-
-
 
 
 }

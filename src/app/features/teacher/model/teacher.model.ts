@@ -6,6 +6,6 @@ export interface Teacher {
   street: string;
   city: string;
   country: string;
-  postal_code: string
+  postal_code: string;
   state: string;
 }

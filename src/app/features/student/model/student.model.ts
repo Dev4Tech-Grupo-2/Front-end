@@ -2,11 +2,11 @@ export interface Student {
   id: number;
   name: string;
   phone: string;
-  fees: string;
+  fees: number;
   email: string;
   street: string;
   city: string;
   country: string;
-  postal_code: string
+  postal_code: string;
   state: string;
 }

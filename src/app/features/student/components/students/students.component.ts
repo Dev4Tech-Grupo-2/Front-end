@@ -62,9 +62,8 @@ export class StudentsComponent implements OnInit {
     console.error(error);
   }
 
-  update() {
-    this.router.navigateByUrl('/create-student');
-
+  update(id: number){
+    this.router.navigate(['update-student', id]);
   }
 
 }

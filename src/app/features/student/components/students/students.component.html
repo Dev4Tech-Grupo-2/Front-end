@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title"> Student Table</h4>
+        <h4 class="card-title"> Tabela de Estudantes</h4>
 
         <div class="spinner-border" role="status" *ngIf="estaCarregando">
           <span class="sr-only">Loading...</span>
@@ -14,6 +14,7 @@
         </div>
 
       </div>
+
       <div class="card-body">
         <div class="table-responsive">
           <table class="table">
@@ -43,7 +44,7 @@
                 <td> {{item.country}} </td>
                 <td class=""> {{item.fees}} </td>
 
-                <td> <button class="btn  btn-sm" (click)="update()">update</button> </td>
+                <td> <button class="btn btn-success btn-sm" (click)="update(item.id)">update</button> </td>
                 <td> <button class="btn btn-danger btn-sm" (click)="deleteStudent(item.id)">delete</button> </td>
               </tr>
             </tbody>

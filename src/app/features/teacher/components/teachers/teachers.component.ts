@@ -13,6 +13,7 @@ export class TeachersComponent implements OnInit {
 
   teachers: Array<Teacher> = [];
   teacher: Teacher;
+  //id:number;
 
 
   estaCarregando: boolean;
@@ -61,9 +62,11 @@ export class TeachersComponent implements OnInit {
     console.error(error);
   }
 
-  update() {
-    this.router.navigateByUrl('/create-teacher');
 
+  update(id: number){
+    this.router.navigate(['update-teacher', id]);
   }
+
+ 
 
 }

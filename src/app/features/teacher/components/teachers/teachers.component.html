@@ -33,7 +33,7 @@
                 <td> {{item.city}} </td>
                 <td> {{item.state}} </td>
                 <td> {{item.country}} </td>
-                <td> <button class="btn  btn-sm" (click)="update()">update</button> </td>
+                <td> <button class="btn btn-success btn-sm" (click)="update(item.id)">update</button> </td>
                 <td> <button class="btn btn-danger btn-sm" (click)="deleteTeacher(item.id)">delete</button> </td>
               </tr>
             </tbody>

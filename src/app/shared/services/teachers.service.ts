@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Teacher } from './../../features/teacher/model/teacher.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -34,10 +35,10 @@ export class TeachersService {
     return this.httpClient.post(this.baseUrl + '/teachers', teacher, this.options);
   }
 
-  update(id: number, teacher: Teacher) {
-    return this.httpClient.put<Teacher>(this.baseUrl + '/teachers/' + id, teacher, this.options);
-  }
+  update(id:number, teacher: Teacher): Observable<Object> {
 
+    return this.httpClient.put(this.baseUrl + '/teachers/' + id, JSON.stringify(teacher), this.options)
+  }
 
 
   remove(id: number) {

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Student } from 'src/app/features/student/model/student.model';
@@ -33,11 +34,9 @@ export class StudentsService {
     return this.httpClient.post(this.baseUrl + '/students', student, this.options);
   }
 
-  update(id: number, student: Student) {
-    return this.httpClient.put<Student>(this.baseUrl + '/students/' + id, student, this.options);
+  update(id: number, student: Student):Observable<Object> {
+    return this.httpClient.put<Student>(this.baseUrl + '/students/' + id, JSON.stringify(student), this.options);
   }
-
-
 
   remove(id: number) {
     return this.httpClient.delete(this.baseUrl + '/students/' + id, this.options);
