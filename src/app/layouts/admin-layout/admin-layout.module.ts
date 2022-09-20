@@ -1,3 +1,4 @@
+import { TeacherModule } from './../../features/teacher/teacher.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -15,13 +16,16 @@ import { NotificationsComponent }   from '../../pages/notifications/notification
 import { UpgradeComponent }         from '../../pages/upgrade/upgrade.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StudentModule } from 'app/features/student/student.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
-    NgbModule
+    NgbModule,
+    StudentModule,
+    TeacherModule
   ],
   declarations: [
     DashboardComponent,

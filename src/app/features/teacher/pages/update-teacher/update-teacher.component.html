@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-user">
+      <div class="card-header">
+        <h5 class="card-title">Update Teacher</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="formTeacherUp">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" formControlName="name" [(ngModel)]="teacher.name" class="form-control"
+                  placeholder="fullname">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8 pr-1">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" [(ngModel)]="teacher.email" formControlName="email" class="form-control"
+                  placeholder="student@student.com">
+              </div>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" [(ngModel)]="teacher.phone" formControlName="phone" class="form-control"
+                  placeholder="(11) 90101-0001">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 pr-1">
+              <div class="form-group">
+                <label>Address</label>
+                <input type="email" [(ngModel)]="teacher.street" formControlName="street" class="form-control"
+                  placeholder="Av. Paulista">
+              </div>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" [(ngModel)]="teacher.city" formControlName="city" class="form-control"
+                  placeholder="São Paulo">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" [(ngModel)]="teacher.state" formControlName="state" class="form-control"
+                  placeholder="SP">
+              </div>
+            </div>
+            <div class="col-md-4 px-1">
+              <div class="form-group">
+                <label>Country</label>
+                <input type="text" [(ngModel)]="teacher.country" formControlName="country" class="form-control"
+                  placeholder="Brazil">
+              </div>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" [(ngModel)]="teacher.postal_code" formControlName="postal_code" class="form-control"
+                  placeholder="17560-057">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button type="submit"
+              (click)="onSubmit()"
+              [disabled]="!formTeacherUp.valid"
+                class="btn btn-primary btn-round">
+                Save
+              </button>
+              <button type="submit" (click)="cancelar()"  class="btn btn-danger btn-round">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
