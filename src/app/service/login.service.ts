@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment.prod';
-import { UserRequest, UserResponse } from '../../User.interface';
+import { UserRequest } from '../../User.interface';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class LoginService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  login(user: UserRequest): Observable<UserResponse> {
+  login(user: UserRequest): Observable<any> {
     return this.http.post(`${this.BASE_URL}/oauth/token`, user).pipe(
       tap((token: any) => this.authService.setToken(token))
     );
