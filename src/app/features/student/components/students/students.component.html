@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Tabela de Estudantes</h4>
+
+        <div class="spinner-border" role="status" *ngIf="estaCarregando">
+          <span class="sr-only">Loading...</span>
+        </div>
+
+        <div *ngIf="erroNoCarregamento">
+          <h2>Deu erro :(</h2>
+          <button (click)="loadTable()"> Tentar novamente </button>
+        </div>
+
+      </div>
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th> ID </th>
+              <th> Name </th>
+              <th> Phone </th>
+              <th> Email</th>
+              <th> Zip Code</th>
+              <th> City </th>
+              <th> State </th>
+              <th> Country </th>
+              <th class=""> Fees </th>
+              <th></th>
+              <th>Actions</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of students">
+                <td> {{item.id}} </td>
+                <td> {{item.name}} </td>
+                <td> {{item.phone}} </td>
+                <td> {{item.email}} </td>
+                <td> {{item.postal_code}} </td>
+                <td> {{item.city}} </td>
+                <td> {{item.state}} </td>
+                <td> {{item.country}} </td>
+                <td class=""> {{item.fees}} </td>
+
+                <td> <button class="btn btn-success btn-sm" (click)="update(item.id)">update</button> </td>
+                <td> <button class="btn btn-danger btn-sm" (click)="deleteStudent(item.id)">delete</button> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
