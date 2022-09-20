@@ -42,10 +42,11 @@
               <p class="text-muted">Sign in to Latform to continue</p>
             </div>
             <form>
+              <!-- #form="ngForm" (ngSubmit)="onSubmit(form)" -->
               <div class="form-group" style="margin-bottom: 20px">
                 <div class="form-icon-wrapper">
                   <input
-                    [(ngModel)]="userLogin.email"
+                    [(ngModel)]="username"
                     type="email"
                     class="form-control"
                     placeholder="Enter email"
@@ -70,7 +71,7 @@
               <div class="form-group">
                 <div class="form-icon-wrapper">
                   <input
-                    [(ngModel)]="userLogin.password"
+                    [(ngModel)]="password"
                     type="password"
                     class="form-control"
                     placeholder="Enter password"
@@ -124,7 +125,11 @@
                 </div>
               </div>
               <div class="form-group text-center">
-                <button class="btn btn-primary" (click)="signIn()">
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  (click)="onSubmit()"
+                >
                   Sign In
                 </button>
               </div>

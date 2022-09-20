@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  token: '',
-  name: ''
+  BASE_URL: 'localhost:8080'
 };

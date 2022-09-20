@@ -39,7 +39,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     NavbarModule,
     ToastrModule.forRoot(),
     FooterModule,
-    FixedPluginModule
+    FixedPluginModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

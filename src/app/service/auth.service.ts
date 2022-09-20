@@ -1,33 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserAccountModelRequest } from 'app/model/UserAccountModelRequest';
-import { UserAccountModelResponse } from 'app/model/UserAccountModelResponse';
-import { environment } from 'environments/environment.prod';
 import { Observable } from 'rxjs';
+import { UserResponse } from 'User.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  token!: string;
+
   constructor(private http: HttpClient) { }
-
-  token = {
-    headers: new HttpHeaders().set('Authorization', environment.token),
-  };
-
-  refreshToken() {
-    this.token = {
-      headers: new HttpHeaders().set('Authorization', environment.token),
-    };
-  }
-
-  signIn(userAccountModelResponse: UserAccountModelResponse): Observable<UserAccountModelResponse> {
-    return this.http.post<UserAccountModelResponse>(
-      'http://localhost:8080/oauth/token',
-      userAccountModelResponse
-    );
-  }
 
   signUp(userAccountModelRequest: UserAccountModelRequest): Observable<UserAccountModelRequest> {
     return this.http.post<UserAccountModelRequest>(
@@ -36,14 +20,48 @@ export class AuthService {
     );
   }
 
-  signed() {
-    let ok = false;
+  setToken(tokenResponse: UserResponse) {
+    this.token = tokenResponse.access_token;
+    localStorage.setItem('token', this.token);
+  }
 
-    if (environment.token != '') {
-      ok = true;
+  getToken(): string | null {
+    if (this.token) {
+      return this.token;
     }
 
-    return ok;
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      this.token = token;
+      return this.token;
+    }
+
+    return null;
   }
+
+  // public decodePayloadJWT(): UserTokenPayload | null {
+  //   try {
+  //     const token = this.getToken();
+
+  //     if (token === null) {
+  //       throw new Error();
+  //     }
+
+  //     return jwt_decode(token);
+  //   } catch (Error) {
+  //     return null;
+  //   }
+  // }
+
+  // isLoggedIn(): boolean {
+  //   return this.decodePayloadJWT() !== null;
+  // }
+
+  // logout(): void {
+  //   this.token = '';
+  //   localStorage.clear();
+  //   this.router.navigate(['login'])
+  // }
 
 }
