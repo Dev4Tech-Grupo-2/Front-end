@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { CreateStudentComponent } from './features/student/pages/create-student/create-student.component';
+import { UpdateStudentsComponent } from './features/student/pages/update-students/update-students.component';
+import { CreateTeacherComponent } from './features/teacher/pages/create-teacher/create-teacher.component';
+import { UpdateTeacherComponent } from './features/teacher/pages/update-teacher/update-teacher.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
@@ -26,6 +30,10 @@ const routes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'create-student',       component: CreateStudentComponent },
+    { path: 'update-student/:id',   component: UpdateStudentsComponent },
+    { path: 'create-teacher',       component: CreateTeacherComponent },
+    { path: 'update-teacher/:id',   component: UpdateTeacherComponent },
     {
       path: '',
       redirectTo: 'landing-page',

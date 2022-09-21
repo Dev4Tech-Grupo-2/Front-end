@@ -1,8 +1,9 @@
-import { StudentsService } from './../../../../shared/services/students.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { Student } from '../../model/student.model';
+import { StudentsService } from './../../../../shared/services/students.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class CreateStudentComponent implements OnInit {
     street: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
-    postal_code: new FormControl('', [Validators.required]),
+    postalCode: new FormControl('', [Validators.required]),
     state: new FormControl('', [Validators.required])
 
   });

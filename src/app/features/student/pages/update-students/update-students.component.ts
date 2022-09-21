@@ -25,7 +25,7 @@ export class UpdateStudentsComponent implements OnInit {
     street: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
-    postal_code: new FormControl('', [Validators.required]),
+    postalCode: new FormControl('', [Validators.required]),
     state: new FormControl('', [Validators.required])
 
   });

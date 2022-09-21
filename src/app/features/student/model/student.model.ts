@@ -7,6 +7,6 @@ export interface Student {
   street: string;
   city: string;
   country: string;
-  postal_code: string;
+  postalCode: string;
   state: string;
 }
