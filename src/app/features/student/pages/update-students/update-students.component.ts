@@ -15,7 +15,7 @@ export class UpdateStudentsComponent implements OnInit {
 
   students: Array<Student> = [];
   student?: Student;
-  id?:number;
+  id?: number;
 
   formStudentUp: any = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -31,17 +31,17 @@ export class UpdateStudentsComponent implements OnInit {
   });
 
   constructor(private router: Router,
-  private activedRoute:ActivatedRoute,
+    private activedRoute: ActivatedRoute,
     private studentsService: StudentsService) { }
 
 
   ngOnInit() {
     this.id = this.activedRoute.snapshot.params['id'];
+    console.log("ID" + this.id)
     this.studentsService.getById(this.id).subscribe(student => {
       this.student = student;
     });
   }
-
 
   onSubmit() {
     this.studentsService.update(this.id, this.formStudentUp.value).subscribe(res => {
@@ -50,9 +50,8 @@ export class UpdateStudentsComponent implements OnInit {
     });
   }
 
-  cancelar(){
+  cancelar() {
     this.router.navigateByUrl('/dashboard');
   }
-
 
 }

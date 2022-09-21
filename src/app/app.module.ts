@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +12,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './login/login.component';
 import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module';
 import { FooterModule } from './shared/footer/footer.module';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -33,7 +34,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FormsModule,
     BrowserAnimationsModule,
     // RouterModule.forRoot(AppRoutes,{
-      
+
     // }),
     SidebarModule,
     NavbarModule,
@@ -42,7 +43,13 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FixedPluginModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
