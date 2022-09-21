@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { UserRequest } from '../../User.interface';
 import { AuthService } from './auth.service';
 
@@ -17,7 +17,14 @@ export class LoginService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   login(user: UserRequest): Observable<any> {
-    return this.http.post(`${this.BASE_URL}/oauth/token`, user).pipe(
+    const form = new FormData;
+    form.append('username', user.username);
+    form.append('password', user.password);
+    form.append('grant_type', user.grant_type);
+    form.append('client_id', user.client_id);
+    form.append('client_secret', user.client_secret);
+
+    return this.http.post(`${this.BASE_URL}/oauth/token`, form).pipe(
       tap((token: any) => this.authService.setToken(token))
     );
   }
