@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserAccountModelRequest } from 'app/model/UserAccountModelRequest';
-import { AuthService } from 'app/service/auth.service';
+import { AuthService } from 'app/shared/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,16 +19,16 @@ export class SignUpComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0,0)
+    window.scroll(0, 0)
   }
 
-  confirmPassword(event: any){
+  confirmPassword(event: any) {
     this.confirmPass = event.target.value
   }
 
-  signUp (){
-    
-    if(this.user.password != this.confirmPass){
+  signUp() {
+
+    if (this.user.password != this.confirmPass) {
       alert('As senhas estão diferentes!')
     } else {
 

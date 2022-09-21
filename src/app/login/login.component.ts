@@ -1,8 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'app/service/auth.service';
-import { LoginService } from 'app/service/login.service';
+import { AuthService } from 'app/shared/services/auth.service';
+import { LoginService } from 'app/shared/services/login.service';
 import { finalize } from 'rxjs';
 import { UserRequest, UserResponse } from 'User.interface';
 
@@ -12,7 +12,7 @@ import { UserRequest, UserResponse } from 'User.interface';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {  
+export class LoginComponent {
 
   username!: string;
   password!: string

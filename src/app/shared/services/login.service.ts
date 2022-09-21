@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { environment } from '../../environments/environment';
-import { UserRequest } from '../../User.interface';
+import { environment } from '../../../environments/environment';
+import { UserRequest } from '../../../User.interface';
 import { AuthService } from './auth.service';
 
 @Injectable({
