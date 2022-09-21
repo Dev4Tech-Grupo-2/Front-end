@@ -7,7 +7,6 @@ import { UpdateStudentsComponent } from './features/student/pages/update-student
 import { CreateTeacherComponent } from './features/teacher/pages/create-teacher/create-teacher.component';
 import { UpdateTeacherComponent } from './features/teacher/pages/update-teacher/update-teacher.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { IconsComponent } from './pages/icons/icons.component';
 import { MapsComponent } from './pages/maps/maps.component';
@@ -22,7 +21,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "cadastro", component: SignUpComponent },
   // { path: 'dashboard',      component: DashboardComponent },
-  { path: "dashboard", component: StudentComponent },
+  // { path: "dashboard", component: StudentComponent },
   { path: "user", component: UserComponent },
   { path: "table", component: TableComponent },
   { path: "typography", component: TypographyComponent },
@@ -45,7 +44,7 @@ const routes: Routes = [
   },
   {
     path: "dashboard",
-    component: AdminLayoutComponent,
+    component: StudentComponent,
     children: [
       {
         path: "dashboard",

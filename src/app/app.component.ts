@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
+import { AuthService } from './shared/services/auth.service';
 
-export class AppComponent{}
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
+})
+export class AppComponent {
+  constructor(private authService: AuthService) {}
+
+  isLoggedIn() {
+    return this.authService.getToken() != null ? true : false;
+  }
+}
