@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { LoginComponent } from './login/login.component';
 import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module';
 import { FooterModule } from './shared/footer/footer.module';
@@ -44,6 +45,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FooterModule,
     FixedPluginModule,
     FormsModule,
+    AdminLayoutModule,
   ],
   providers: [
     {

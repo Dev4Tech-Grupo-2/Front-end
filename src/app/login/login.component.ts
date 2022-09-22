@@ -79,7 +79,7 @@ export class LoginComponent {
     this.token = res.access_token;
     console.log("onSucess")
 
-    this.router.navigate(["/dashboard"]);
+    this.router.navigate(["/admin-page/dashboard"]);
   }
 
   onError(error: {}): void {

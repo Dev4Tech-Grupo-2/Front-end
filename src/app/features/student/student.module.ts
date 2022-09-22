@@ -22,6 +22,11 @@ import { UpdateStudentsComponent } from './pages/update-students/update-students
     ReactiveFormsModule,
     TeacherModule,
   ],
-  exports: [StudentComponent],
+  exports: [
+    StudentsComponent,
+    CreateStudentComponent,
+    StudentComponent,
+    UpdateStudentsComponent,
+  ],
 })
 export class StudentModule {}
