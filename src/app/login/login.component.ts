@@ -1,10 +1,10 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginRequest, LoginResponse } from 'app/shared/models/interfaces/login.interface';
 import { AuthService } from 'app/shared/services/auth.service';
 import { LoginService } from 'app/shared/services/login.service';
 import { finalize } from 'rxjs';
-import { UserRequest, UserResponse } from 'User.interface';
 
 
 @Component({
@@ -51,7 +51,7 @@ export class LoginComponent {
 
     console.log("foi!")
 
-    const user: UserRequest = {
+    const user: LoginRequest = {
       username: this.username,
       password: this.password,
       grant_type: "password",
@@ -62,7 +62,7 @@ export class LoginComponent {
     this.login(user);
   }
 
-  login(user: UserRequest) {
+  login(user: LoginRequest) {
     console.log("login")
     this.isLoading = true;
     this.loginService.login(user)
@@ -75,7 +75,7 @@ export class LoginComponent {
       )
   }
 
-  onSuccess(res: UserResponse): void {
+  onSuccess(res: LoginResponse): void {
     this.token = res.access_token;
     console.log("onSucess")
 

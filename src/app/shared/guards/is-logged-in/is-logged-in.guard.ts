@@ -11,9 +11,9 @@ export class IsLoggedInGuard implements CanActivate {
 
   canActivate(): boolean {
     const isLoggedIn = this.authService.isLoggedIn();
-    console.log("Guarda de rota: " + isLoggedIn)
 
     if (isLoggedIn) {
+      console.log("Guarda de rota: " + isLoggedIn)
       return true;
     }
 

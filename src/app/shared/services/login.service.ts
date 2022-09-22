@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { UserRequest } from '../../../User.interface';
+import { LoginRequest, LoginResponse } from '../models/interfaces/login.interface';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class LoginService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  login(user: UserRequest): Observable<any> {
+  login(user: LoginRequest): Observable<LoginResponse> {
     const form = new FormData;
     form.append('username', user.username);
     form.append('password', user.password);

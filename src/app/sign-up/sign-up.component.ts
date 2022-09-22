@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserAccountModelRequest } from 'app/model/UserAccountModelRequest';
+import { UserRequest, UserResponse } from 'app/shared/models/interfaces/user.interface';
 import { AuthService } from 'app/shared/services/auth.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AuthService } from 'app/shared/services/auth.service';
 })
 export class SignUpComponent implements OnInit {
 
-  user: UserAccountModelRequest = new UserAccountModelRequest
+  user: UserRequest = {} as UserRequest
   confirmPass: string
 
   constructor(
@@ -32,12 +32,16 @@ export class SignUpComponent implements OnInit {
       alert('As senhas estão diferentes!')
     } else {
 
-      this.authService.signUp(this.user).subscribe((resp: UserAccountModelRequest) => {
-        this.user = resp
-        this.router.navigate(['/login'])
-        alert('Usuário cadastrado com sucesso!')
-        console.log(resp)
-      })
+      this.authService.signUp(this.user).subscribe(
+        {
+          next: (resp: UserResponse) => {
+            alert('Usuário cadastrado com sucesso!')
+            console.log(resp)
+            this.router.navigate(['/login'])
+          },
+          error: (): void => alert('Erro ao cadastrar usuário:(')
+        }
+      )
 
     }
   }
