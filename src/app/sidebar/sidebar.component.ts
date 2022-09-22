@@ -9,10 +9,10 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard', icon: 'nc-tile-56', class: '' },
-    { path: '/create-teacher', title: 'Cadastrar Professor', icon: 'nc-hat-3', class: '' },
-    { path: '/create-student', title: 'Cadastrar Estudante', icon: 'nc-circle-10', class: '' },
-    { path: '/create-class', title: 'Cadastrar Aula', icon: 'nc-hat-3', class: '' },
+    { path: '/admin-page/dashboard', title: 'Dashboard', icon: 'nc-tile-56', class: '' },
+    { path: '/admin-page/create-teacher', title: 'Cadastrar Professor', icon: 'nc-hat-3', class: '' },
+    { path: '/admin-page/create-student', title: 'Cadastrar Estudante', icon: 'nc-circle-10', class: '' },
+    { path: '/admin-page/create-class', title: 'Cadastrar Aula', icon: 'nc-hat-3', class: '' },
 ];
 
 @Component({

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserAccountModelRequest } from 'app/model/UserAccountModelRequest';
 import { Observable } from 'rxjs';
 import { UserResponse } from 'User.interface';
@@ -11,7 +12,10 @@ export class AuthService {
 
   token!: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
   signUp(userAccountModelRequest: UserAccountModelRequest): Observable<UserAccountModelRequest> {
     return this.http.post<UserAccountModelRequest>(
@@ -58,10 +62,10 @@ export class AuthService {
     return this.getToken !== null;
   }
 
-  // logout(): void {
-  //   this.token = '';
-  //   localStorage.clear();
-  //   this.router.navigate(['login'])
-  // }
+  logout(): void {
+    this.token = '';
+    localStorage.clear();
+    this.router.navigate([''])
+  }
 
 }
