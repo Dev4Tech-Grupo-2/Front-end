@@ -29,8 +29,10 @@ export class ClassesService {
     );
   }
 
-  getClassesTable(page: number) {
-    return this.httpClient.get(this.baseUrl + "/classes" + "?page=" + page);
+  getClassesTable(page: number): Observable<ApiResponse> {
+    return this.httpClient.get<ApiResponse>(
+      this.baseUrl + "/classes" + "?page=" + page
+    );
   }
 
   getById(id: number) {

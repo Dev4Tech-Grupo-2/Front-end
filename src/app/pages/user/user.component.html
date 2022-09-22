@@ -6,7 +6,6 @@
       </div>
       <div class="card-body" style="min-height: 0px">
         <form [formGroup]="formClass">
-          <!--  [formGroup]="formClass" -->
           <div class="row">
             <div class="col-md-6 pr-1">
               <div class="form-group">
@@ -15,21 +14,22 @@
                   type="text"
                   formControlName="grade"
                   class="form-control"
-                  placeholder="Company"
+                  placeholder="Ex: 1ª Série"
                   value="1ª Série"
                 />
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
-                <label for="teacher">Professor</label>
+                <label for="teacherId">Professor</label>
                 <select
                   class="form-control"
-                  name="teacher"
-                  id="teacher"
-                  (change)="loadTable()"
+                  formControlName="teacherId"
+                  name="teacherId"
+                  id="teacherId"
+                  [(ngModel)]="teachers"
                 >
-                  <option *ngFor="let item of teachers" value="{{ item.name }}">
+                  <option *ngFor="let item of teachers" value="{{ item.id }}">
                     {{ item.name }}
                   </option>
                 </select>
@@ -38,9 +38,97 @@
           </div>
           <div class="row">
             <div class="update ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary btn-round">
+              <button
+                type="submit"
+                (click)="onSubmit()"
+                class="btn btn-primary btn-round"
+              >
                 Cadastrar
               </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card" style="width: auto">
+                <div class="card-header">
+                  <h4 class="card-title">Tabela de Aulas</h4>
+
+                  <div
+                    class="spinner-border"
+                    role="status"
+                    *ngIf="estaCarregando"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+
+                  <div *ngIf="erroNoCarregamento">
+                    <h2>Deu erro :(</h2>
+                    <button (click)="loadTable()">Tentar novamente</button>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class="text-primary">
+                        <th>ID</th>
+                        <th>Aula</th>
+                        <th>Id Professor</th>
+                        <th></th>
+                        <th>Actions</th>
+                        <th></th>
+                      </thead>
+                      <tbody>
+                        <tr
+                          *ngFor="
+                            let item of classesTable
+                              | paginate
+                                : {
+                                    id: 'pagination1',
+                                    itemsPerPage: 10,
+                                    currentPage: p,
+                                    totalItems: total
+                                  }
+                          "
+                        >
+                          <td>{{ item.classId }}</td>
+                          <td>{{ item.grade }}</td>
+                          <td>{{ item.teacherId }}</td>
+
+                          <td>
+                            <button
+                              class="btn btn-success btn-sm"
+                              (click)="update(item.id)"
+                            >
+                              update
+                            </button>
+                          </td>
+                          <td>
+                            <button
+                              class="btn btn-danger btn-sm"
+                              (click)="deleteStudent(item.id)"
+                            >
+                              delete
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                      "
+                    >
+                      <pagination-controls
+                        id="pagination1"
+                        (pageChange)="pageChangeEvent($event)"
+                      ></pagination-controls>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </form>

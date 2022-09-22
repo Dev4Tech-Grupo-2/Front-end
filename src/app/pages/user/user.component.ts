@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Teacher } from 'app/features/teacher/model/teacher.model';
+import { ApiResponse } from 'app/shared/ApiResponse';
+import { ClassesService } from 'app/shared/services/classes.service';
 import { TeachersService } from 'app/shared/services/teachers.service';
 import { finalize, take } from 'rxjs';
 
@@ -27,17 +29,24 @@ export class UserComponent implements OnInit {
   class?: Class;
   idClass?: number;
 
+  classesTable: any;
+  p: number = 1;
+  page: number = 0;
+  total: number = 0;
+
   estaCarregando: boolean;
   erroNoCarregamento: boolean;
 
-  // formClass: any = new FormGroup({
-  //   grade: new FormControl("", [Validators.required]),
-  // });
+  formClass: any = new FormGroup({
+    grade: new FormControl("", [Validators.required]),
+    teacherId: new FormControl(0, [Validators.required]),
+  });
 
-  formClass: FormGroup = {} as FormGroup;
+  // formClass: FormGroup = {} as FormGroup;
 
   constructor(
     private teachersService: TeachersService,
+    private classesService: ClassesService,
     private router: Router
   ) {}
 
@@ -46,6 +55,7 @@ export class UserComponent implements OnInit {
     this.teachersService.getTeachers().subscribe((teachers) => {
       this.teachers = teachers.content;
     });
+    this.getClassesTable();
   }
 
   loadTable() {
@@ -72,13 +82,33 @@ export class UserComponent implements OnInit {
 
   onSubmit() {
     this.createClass();
+    this.getClassesTable();
   }
 
   createClass() {
     const formValue = this.formClass.value;
-    this.teachersService.create(formValue).subscribe((res) => {
-      alert("Professor criado com sucesso!");
+    this.classesService.create(formValue).subscribe((res) => {
+      alert("Aula criada com sucesso!");
       //   this.router.navigateByUrl("/admin-page/dashboard");
+      this.getClassesTable();
     });
+  }
+
+  getClassesTable() {
+    this.classesService
+      .getClassesTable(this.page)
+
+      .subscribe((response: ApiResponse) => {
+        this.classesTable = response.content;
+
+        this.total = response.totalElements;
+      });
+  }
+
+  pageChangeEvent(event: number) {
+    this.page = event - 1;
+    this.p = event;
+
+    this.getClassesTable();
   }
 }
