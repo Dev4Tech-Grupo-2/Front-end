@@ -53,7 +53,7 @@ export class UpdateTeacherComponent implements OnInit {
       .update(this.id, this.formTeacherUp.value)
       .subscribe((res) => {
         alert("Professor atualizado com sucesso!");
-        this.router.navigateByUrl("/dashboard");
+        this.router.navigateByUrl("/admin-page/dashboard");
       });
   }
 

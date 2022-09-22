@@ -50,7 +50,7 @@ export class UpdateStudentsComponent implements OnInit {
       .update(this.id, this.formStudentUp.value)
       .subscribe((res) => {
         alert("Estudante atualizado com sucesso!");
-        this.router.navigateByUrl("/dashboard");
+        this.router.navigateByUrl("/admin-page/dashboard");
       });
   }
 

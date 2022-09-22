@@ -86,6 +86,6 @@ export class TeachersComponent implements OnInit {
   }
 
   update(id: number) {
-    this.router.navigate(["update-teacher", id]);
+    this.router.navigate(["/admin-page/update-teacher", id]);
   }
 }

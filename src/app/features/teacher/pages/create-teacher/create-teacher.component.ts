@@ -48,7 +48,7 @@ export class CreateTeacherComponent implements OnInit {
     const formValue = this.formTeacher.value;
     this.teachersService.create(formValue).subscribe((res) => {
       alert("Professor criado com sucesso!");
-      this.router.navigateByUrl("/dashboard");
+      this.router.navigateByUrl("/admin-page/dashboard");
     });
   }
 

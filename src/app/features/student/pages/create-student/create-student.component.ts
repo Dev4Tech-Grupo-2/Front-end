@@ -43,7 +43,7 @@ export class CreateStudentComponent implements OnInit {
     const formValue = this.formStudent.value;
     this.studentsService.create(formValue).subscribe((res) => {
       alert("Estudante criado com sucesso!");
-      this.router.navigateByUrl("/dashboard");
+      this.router.navigateByUrl("/admin-page/dashboard");
     });
   }
 }
