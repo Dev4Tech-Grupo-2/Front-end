@@ -6693,6 +6693,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
     border-radius: 50%;
     border: 1px solid transparent; }
   .navbar .navbar-brand {
+    width: 190px;
     text-transform: capitalize;
     font-size: 20px;
     padding-top: 0.5rem;

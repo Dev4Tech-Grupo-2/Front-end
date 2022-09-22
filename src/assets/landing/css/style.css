@@ -454,7 +454,7 @@ a:hover, a:focus, a:active {
   background: url(../img/logo.png) no-repeat left 100%;
   top: 24px;
   position: relative;
-  width: 160px;
+  width: 180px;
   height: 43px;
   text-indent: -999999px;
   -webkit-transition: .2s all;
