@@ -54,9 +54,9 @@ export class AuthService {
   //   }
   // }
 
-  // isLoggedIn(): boolean {
-  //   return this.decodePayloadJWT() !== null;
-  // }
+  isLoggedIn(): boolean {
+    return this.getToken !== null;
+  }
 
   // logout(): void {
   //   this.token = '';

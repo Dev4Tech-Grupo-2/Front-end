@@ -21,7 +21,10 @@ import { UpdateStudentsComponent } from './pages/update-students/update-students
     TeacherModule
   ],
   exports: [
-    StudentComponent
+    StudentsComponent,
+    CreateStudentComponent,
+    StudentComponent,
+    UpdateStudentsComponent
   ]
 })
 export class StudentModule { }
