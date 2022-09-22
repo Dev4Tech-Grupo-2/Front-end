@@ -1,26 +1,19 @@
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { CreateTeacherComponent } from './pages/create-teacher/create-teacher.component';
 import { UpdateTeacherComponent } from './pages/update-teacher/update-teacher.component';
-
-
 
 @NgModule({
   declarations: [
     TeachersComponent,
     CreateTeacherComponent,
-    UpdateTeacherComponent
+    UpdateTeacherComponent,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-
-  ],
-  exports: [
-    TeachersComponent
-  ]
-
+  imports: [CommonModule, NgxPaginationModule, ReactiveFormsModule],
+  exports: [TeachersComponent],
 })
-export class TeacherModule { }
+export class TeacherModule {}

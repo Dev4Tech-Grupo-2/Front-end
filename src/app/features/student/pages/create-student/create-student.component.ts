@@ -5,13 +5,11 @@ import { Router } from '@angular/router';
 import { Student } from '../../model/student.model';
 import { StudentsService } from './../../../../shared/services/students.service';
 
-
 @Component({
-  templateUrl: './create-student.component.html',
-  styleUrls: ['./create-student.component.scss']
+  templateUrl: "./create-student.component.html",
+  styleUrls: ["./create-student.component.scss"],
 })
 export class CreateStudentComponent implements OnInit {
-
   students: Array<Student> = [];
   student?: Student;
 
@@ -19,31 +17,33 @@ export class CreateStudentComponent implements OnInit {
   erroNoCarregamento: boolean;
 
   formStudent: any = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    phone: new FormControl('', [Validators.required]),
+    name: new FormControl("", [Validators.required]),
+    phone: new FormControl("", [Validators.required]),
     fees: new FormControl(0, [Validators.required, Validators.min(50)]),
-    email: new FormControl('', [Validators.required]),
-    street: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required]),
-    country: new FormControl('', [Validators.required]),
-    postalCode: new FormControl('', [Validators.required]),
-    state: new FormControl('', [Validators.required])
-
+    email: new FormControl("", [Validators.required]),
+    street: new FormControl("", [Validators.required]),
+    city: new FormControl("", [Validators.required]),
+    country: new FormControl("", [Validators.required]),
+    postalCode: new FormControl("", [Validators.required]),
+    state: new FormControl("", [Validators.required]),
   });
 
-  constructor(private router: Router,
-    private studentsService: StudentsService) { }
+  constructor(
+    private router: Router,
+    private studentsService: StudentsService
+  ) {}
 
-  ngOnInit(): void {
-    }
-
+  ngOnInit(): void {}
 
   onSubmit() {
-    const formValue = this.formStudent.value;
-    this.studentsService.create(formValue).subscribe((res) => {
-      this.router.navigateByUrl('/dashboard');
-    });
-
+    this.createStudent();
   }
 
+  createStudent() {
+    const formValue = this.formStudent.value;
+    this.studentsService.create(formValue).subscribe((res) => {
+      alert("Estudante criado com sucesso!");
+      this.router.navigateByUrl("/dashboard");
+    });
+  }
 }

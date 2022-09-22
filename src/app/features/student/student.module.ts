@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { TeacherModule } from './../teacher/teacher.module';
 import { StudentsComponent } from './components/students/students.component';
@@ -13,15 +14,14 @@ import { UpdateStudentsComponent } from './pages/update-students/update-students
     StudentsComponent,
     CreateStudentComponent,
     StudentComponent,
-    UpdateStudentsComponent
+    UpdateStudentsComponent,
   ],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     ReactiveFormsModule,
-    TeacherModule
+    TeacherModule,
   ],
-  exports: [
-    StudentComponent
-  ]
+  exports: [StudentComponent],
 })
-export class StudentModule { }
+export class StudentModule {}

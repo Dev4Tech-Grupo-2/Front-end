@@ -1,11 +1,11 @@
 export interface Teacher {
-  id: number;
   name: string;
   phone: string;
   email: string;
   street: string;
   city: string;
   country: string;
-  postal_code: string;
+  postalCode: string;
   state: string;
+  salary: number;
 }

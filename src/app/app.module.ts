@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +26,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     AdminLayoutComponent,
     LandingPageComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgxPaginationModule,
     // RouterModule.forRoot(AppRoutes,{
 
     // }),
@@ -41,15 +43,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     ToastrModule.forRoot(),
     FooterModule,
     FixedPluginModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
