@@ -43,7 +43,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     ToastrModule.forRoot(),
     FooterModule,
     FixedPluginModule,
-    // FormsModule,
     AdminLayoutModule,
     ReactiveFormsModule,
   ],

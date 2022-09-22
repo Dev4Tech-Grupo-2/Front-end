@@ -23,10 +23,6 @@ export class AuthService {
   ) { }
 
   signUp(userRequest: UserRequest): Observable<UserResponse> {
-    userRequest.name = "Renato"
-    userRequest.email = "renato@gmail.com"
-    userRequest.password = "123"
-    console.log(`USUARIO CADASTRADO: ${userRequest.name} ${userRequest.email} ${userRequest.password}`)
     return this.http.post<UserResponse>(`${this.BASE_URL}/users`, userRequest);
   }
 

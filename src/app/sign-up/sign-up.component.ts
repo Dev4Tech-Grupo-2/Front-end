@@ -33,14 +33,12 @@ export class SignUpComponent implements OnInit {
     } else {
 
       this.authService.signUp(this.user).subscribe(
-        {
-          next: (resp: UserResponse) => {
-            alert('Usuário cadastrado com sucesso!')
-            console.log(resp)
-            this.router.navigate(['/login'])
-          },
-          error: (): void => alert('Erro ao cadastrar usuário:(')
+
+        (resp: UserResponse) => {
+          alert('Usuário cadastrado com sucesso!')
+          this.router.navigate(['/login'])
         }
+
       )
 
     }
