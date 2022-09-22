@@ -38,17 +38,16 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    // RouterModule.forRoot(AppRoutes,{
-
-    // }),
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(),
     FooterModule,
     FixedPluginModule,
-    // FormsModule,
     AdminLayoutModule,
     ReactiveFormsModule,
+  ],
+  exports: [
+    LandingPageComponent,
   ],
   providers: [
     {
@@ -59,4 +58,4 @@ import { SignUpComponent } from './sign-up/sign-up.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

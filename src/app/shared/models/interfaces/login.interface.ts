@@ -1,4 +1,4 @@
-export interface UserRequest {
+export interface LoginRequest {
     username: string
     password: string
     grant_type: string
@@ -6,7 +6,7 @@ export interface UserRequest {
     client_secret: string
 }
 
-export interface UserResponse {
+export interface LoginResponse {
     access_token: string
     token_type: string
     expires_in: number

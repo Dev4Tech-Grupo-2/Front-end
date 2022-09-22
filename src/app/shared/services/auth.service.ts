@@ -1,14 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserAccountModelRequest } from 'app/model/UserAccountModelRequest';
+import { environment } from 'environments/environment';
+import jwt_decode from 'jwt-decode';
 import { Observable } from 'rxjs';
-import { UserResponse } from 'User.interface';
+
+import { LoginResponse } from '../models/interfaces/login.interface';
+import { UserRequest, UserResponse } from '../models/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  BASE_URL = environment.BASE_URL;
 
   token!: string;
 
@@ -17,14 +22,11 @@ export class AuthService {
     private router: Router
   ) { }
 
-  signUp(userAccountModelRequest: UserAccountModelRequest): Observable<UserAccountModelRequest> {
-    return this.http.post<UserAccountModelRequest>(
-      'http://localhost:8080/users',
-      userAccountModelRequest
-    );
+  signUp(userRequest: UserRequest): Observable<UserResponse> {
+    return this.http.post<UserResponse>(`${this.BASE_URL}/users`, userRequest);
   }
 
-  setToken(tokenResponse: UserResponse) {
+  setToken(tokenResponse: LoginResponse) {
     this.token = tokenResponse.access_token;
     localStorage.setItem('token', this.token);
   }
@@ -44,22 +46,21 @@ export class AuthService {
     return null;
   }
 
-  // public decodePayloadJWT(): UserTokenPayload | null {
-  //   try {
-  //     const token = this.getToken();
+  public decodePayloadJWT(): any | null {
+    try {
+      const token = this.getToken();
+      if (token.length == 0) {
+        throw new Error();
+      }
 
-  //     if (token === null) {
-  //       throw new Error();
-  //     }
-
-  //     return jwt_decode(token);
-  //   } catch (Error) {
-  //     return null;
-  //   }
-  // }
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
+  }
 
   isLoggedIn(): boolean {
-    return this.getToken !== null;
+    return this.getToken() !== null;
   }
 
   logout(): void {
