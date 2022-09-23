@@ -5,6 +5,7 @@ import { StudentComponent } from 'app/features/student/pages/student/student.com
 import { UpdateStudentsComponent } from 'app/features/student/pages/update-students/update-students.component';
 import { CreateTeacherComponent } from 'app/features/teacher/pages/create-teacher/create-teacher.component';
 import { UpdateTeacherComponent } from 'app/features/teacher/pages/update-teacher/update-teacher.component';
+import { UpdateClassComponent } from 'app/pages/user/update-class/update-class.component';
 import { UserComponent } from 'app/pages/user/user.component';
 import { IsLoggedInGuard } from 'app/shared/guards/is-logged-in/is-logged-in.guard';
 
@@ -16,20 +17,18 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     canActivate: [IsLoggedInGuard],
     children: [
-      { path: 'dashboard', component: StudentComponent },
+      { path: "dashboard", component: StudentComponent },
       { path: "create-teacher", component: CreateTeacherComponent },
       { path: "update-teacher/:id", component: UpdateTeacherComponent },
       { path: "create-student", component: CreateStudentComponent },
       { path: "update-student/:id", component: UpdateStudentsComponent },
       { path: "create-class", component: UserComponent },
+      { path: "update-class/:id", component: UpdateClassComponent },
     ],
   },
-]
+];
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes),
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-
-export class AdminLayoutRoutingModule { }
+export class AdminLayoutRoutingModule {}

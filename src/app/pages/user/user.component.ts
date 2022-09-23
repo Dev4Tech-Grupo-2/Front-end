@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Teacher } from 'app/features/teacher/model/teacher.model';
-import { ApiResponse } from 'app/shared/ApiResponse';
+import { PageClass } from 'app/shared/models/interfaces/pageClass.interface';
 import { ClassesService } from 'app/shared/services/classes.service';
 import { TeachersService } from 'app/shared/services/teachers.service';
 import { finalize, take } from 'rxjs';
@@ -18,7 +18,7 @@ import { Class } from './model/class.model';
   templateUrl: "./user.component.html",
   //   styleUrls: ["./user.component.scss"],
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnChanges {
   teachersList: Teacher[];
   teachers: Array<Teacher> = [];
   teacher?: Teacher;
@@ -58,6 +58,10 @@ export class UserComponent implements OnInit {
     this.getClassesTable();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getClassesTable();
+  }
+
   loadTable() {
     this.teachersService
       .getTeachers()
@@ -82,14 +86,13 @@ export class UserComponent implements OnInit {
 
   onSubmit() {
     this.createClass();
-    this.getClassesTable();
   }
 
   createClass() {
     const formValue = this.formClass.value;
     this.classesService.create(formValue).subscribe((res) => {
       alert("Aula criada com sucesso!");
-      //   this.router.navigateByUrl("/admin-page/dashboard");
+      // this.router.navigateByUrl("/admin-page/create-class");
       this.getClassesTable();
     });
   }
@@ -98,7 +101,7 @@ export class UserComponent implements OnInit {
     this.classesService
       .getClassesTable(this.page)
 
-      .subscribe((response: ApiResponse) => {
+      .subscribe((response: PageClass) => {
         this.classesTable = response.content;
 
         this.total = response.totalElements;
@@ -110,5 +113,17 @@ export class UserComponent implements OnInit {
     this.p = event;
 
     this.getClassesTable();
+  }
+
+  update(id: number) {
+    this.router.navigate(["/admin-page/update-class", id]);
+  }
+
+  deleteClass(idClass: number) {
+    this.classesService.remove(idClass).subscribe((res) => {
+      alert("Aula removida com sucesso!");
+      // this.loadTable();
+      this.getClassesTable();
+    });
   }
 }

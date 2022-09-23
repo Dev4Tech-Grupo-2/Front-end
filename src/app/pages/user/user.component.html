@@ -38,11 +38,7 @@
           </div>
           <div class="row">
             <div class="update ml-auto mr-auto">
-              <button
-                type="submit"
-                (click)="onSubmit()"
-                class="btn btn-primary btn-round"
-              >
+              <button (click)="onSubmit()" class="btn btn-primary btn-round">
                 Cadastrar
               </button>
             </div>
@@ -69,7 +65,7 @@
 
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table" (change)="getClassesTable()">
                       <thead class="text-primary">
                         <th>ID</th>
                         <th>Aula</th>
@@ -91,9 +87,9 @@
                                   }
                           "
                         >
-                          <td>{{ item.classId }}</td>
+                          <td>{{ item.id }}</td>
                           <td>{{ item.grade }}</td>
-                          <td>{{ item.teacherId }}</td>
+                          <td>{{ item.teacher.name }}</td>
 
                           <td>
                             <button
@@ -106,7 +102,7 @@
                           <td>
                             <button
                               class="btn btn-danger btn-sm"
-                              (click)="deleteStudent(item.id)"
+                              (click)="deleteClass(item.id)"
                             >
                               delete
                             </button>
