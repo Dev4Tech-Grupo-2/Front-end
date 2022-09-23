@@ -5,6 +5,7 @@ import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
 import { PageClass } from '../models/interfaces/pageClass.interface';
+import { StudentId } from '../models/interfaces/studentId.interface';
 
 @Injectable({
   providedIn: "root",
@@ -21,6 +22,8 @@ export class ClassesService {
   classes: Array<Class> = [];
 
   constructor(private httpClient: HttpClient) {}
+
+  // Class
 
   getClasses(): Observable<PageClass> {
     return this.httpClient.get<PageClass>(
@@ -52,5 +55,27 @@ export class ClassesService {
 
   remove(id: number) {
     return this.httpClient.delete(this.baseUrl + "/classes/" + id);
+  }
+
+  // ClassStudent
+
+  getClassesStudents(): Observable<PageClass> {
+    return this.httpClient.get<PageClass>(
+      this.baseUrl + "/classes",
+      this.options
+    );
+  }
+
+  getClassesStudentsTable(page: number): Observable<PageClass> {
+    return this.httpClient.get<PageClass>(
+      this.baseUrl + "/classes" + "?page=" + page
+    );
+  }
+
+  createClassStudent(id: number, studentId: StudentId): Observable<void> {
+    return this.httpClient.put<void>(
+      this.baseUrl + "/classes/" + id + "/student",
+      studentId
+    );
   }
 }

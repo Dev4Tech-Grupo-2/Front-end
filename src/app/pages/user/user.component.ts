@@ -2,8 +2,9 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Teacher } from 'app/features/teacher/model/teacher.model';
-import { PageClass } from 'app/shared/models/interfaces/pageClass.interface';
+import { PageClass, Student } from 'app/shared/models/interfaces/pageClass.interface';
 import { ClassesService } from 'app/shared/services/classes.service';
+import { StudentsService } from 'app/shared/services/students.service';
 import { TeachersService } from 'app/shared/services/teachers.service';
 import { finalize, take } from 'rxjs';
 
@@ -29,6 +30,10 @@ export class UserComponent implements OnInit, OnChanges {
   class?: Class;
   idClass?: number;
 
+  students: Array<Student> = [];
+  student: Student;
+  studentsTable: any;
+
   classesTable: any;
   p: number = 1;
   page: number = 0;
@@ -42,11 +47,17 @@ export class UserComponent implements OnInit, OnChanges {
     teacherId: new FormControl(0, [Validators.required]),
   });
 
+  formClassStudent: any = new FormGroup({
+    classId: new FormControl(0, [Validators.required]),
+    studentId: new FormControl(0, [Validators.required]),
+  });
+
   // formClass: FormGroup = {} as FormGroup;
 
   constructor(
     private teachersService: TeachersService,
     private classesService: ClassesService,
+    private studentsService: StudentsService,
     private router: Router
   ) {}
 
@@ -56,11 +67,14 @@ export class UserComponent implements OnInit, OnChanges {
       this.teachers = teachers.content;
     });
     this.getClassesTable();
+    this.loadTableStudents();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.getClassesTable();
   }
+
+  // Teacher
 
   loadTable() {
     this.teachersService
@@ -84,6 +98,8 @@ export class UserComponent implements OnInit, OnChanges {
     console.error(error);
   }
 
+  // Class
+
   onSubmit() {
     this.createClass();
   }
@@ -92,7 +108,6 @@ export class UserComponent implements OnInit, OnChanges {
     const formValue = this.formClass.value;
     this.classesService.create(formValue).subscribe((res) => {
       alert("Aula criada com sucesso!");
-      // this.router.navigateByUrl("/admin-page/create-class");
       this.getClassesTable();
     });
   }
@@ -125,5 +140,45 @@ export class UserComponent implements OnInit, OnChanges {
       // this.loadTable();
       this.getClassesTable();
     });
+  }
+
+  // Student
+
+  loadTableStudents() {
+    this.estaCarregando = true;
+    this.erroNoCarregamento = false;
+
+    this.studentsService
+      .getStudents()
+      .pipe(
+        take(1),
+        finalize(() => (this.estaCarregando = false))
+      )
+      .subscribe(
+        (response) => this.onSuccessStudent(response.content),
+        (error) => this.onError(error)
+      );
+  }
+
+  onSuccessStudent(response: Student[]) {
+    this.students = response;
+  }
+
+  onErrorStudent(error: any) {
+    this.erroNoCarregamento = true;
+    console.error(error);
+  }
+
+  // ClassStudent
+
+  createClassStudent(idClass: number) {
+    const formValue = this.formClass.value;
+    const studentId = { id: formValue.id };
+    this.classesService
+      .createClassStudent(idClass, studentId)
+      .subscribe((res) => {
+        alert("Estudante cadastrado na aula com sucesso!");
+        this.getClassesTable();
+      });
   }
 }
