@@ -10,7 +10,7 @@ import { ApiResponse } from '../ApiResponse';
   providedIn: "root",
 })
 export class TeachersService {
-  baseUrl: string = `${environment.apiHost}`;
+  baseUrl: string = `${environment.BASE_URL}`;
 
   options = {
     headers: {
@@ -20,7 +20,7 @@ export class TeachersService {
 
   teachers: Array<Teacher> = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getTeachers(): Observable<ApiResponse> {
     return this.httpClient.get<ApiResponse>(

@@ -12,7 +12,7 @@ import { StudentId } from '../models/interfaces/studentId.interface';
   providedIn: "root",
 })
 export class ClassesService {
-  baseUrl: string = `${environment.apiHost}`;
+  baseUrl: string = `${environment.BASE_URL}`;
 
   options = {
     headers: {
