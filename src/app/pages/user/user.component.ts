@@ -175,7 +175,7 @@ export class UserComponent implements OnInit, OnChanges {
     const formValue = this.formClass.value;
     const studentId = { id: formValue.id };
     this.classesService
-      .createClassStudent(idClass, studentId)
+      .createClassStudent(+idClass, studentId)
       .subscribe((res) => {
         alert("Estudante cadastrado na aula com sucesso!");
         this.getClassesTable();
