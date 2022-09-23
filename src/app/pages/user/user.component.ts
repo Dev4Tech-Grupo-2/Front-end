@@ -181,4 +181,15 @@ export class UserComponent implements OnInit, OnChanges {
         this.getClassesTable();
       });
   }
+
+  getClassesStudentsTable() {
+    this.classesService
+      .getClassesStudentsTable(this.page)
+
+      .subscribe((response: PageClass) => {
+        this.classesTable = response.content;
+
+        this.total = response.totalElements;
+      });
+  }
 }
