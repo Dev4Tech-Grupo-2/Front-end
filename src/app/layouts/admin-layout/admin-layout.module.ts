@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StudentModule } from 'app/features/student/student.module';
 import { UpdateClassComponent } from 'app/pages/user/update-class/update-class.component';
 import { UserComponent } from 'app/pages/user/user.component';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -17,6 +18,7 @@ import { AdminLayoutRoutingModule } from './admin-layout.routing';
     FormsModule,
     NgbModule,
     RouterModule,
+    StudentModule,
     TeacherModule,
     AdminLayoutRoutingModule,
     BrowserAnimationsModule,
@@ -26,4 +28,4 @@ import { AdminLayoutRoutingModule } from './admin-layout.routing';
   declarations: [UserComponent, UpdateClassComponent],
   exports: [UserComponent, UpdateClassComponent],
 })
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }

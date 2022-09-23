@@ -4,6 +4,7 @@ import { Class } from 'app/pages/user/model/class.model';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
+import { ClassAddRequest, ClassAddResponse } from '../models/interfaces/classAdd.interface';
 import { PageClass } from '../models/interfaces/pageClass.interface';
 
 @Injectable({
@@ -20,7 +21,7 @@ export class ClassesService {
 
   classes: Array<Class> = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getClasses(): Observable<PageClass> {
     return this.httpClient.get<PageClass>(
@@ -43,10 +44,10 @@ export class ClassesService {
     return this.httpClient.post(this.baseUrl + "/classes", classesList);
   }
 
-  update(id: number, classesList: Class): Observable<Class> {
-    return this.httpClient.put<Class>(
+  update(id: number, classAddRequest: ClassAddRequest): Observable<ClassAddResponse> {
+    return this.httpClient.put<ClassAddResponse>(
       this.baseUrl + "/classes/" + id,
-      classesList
+      classAddRequest
     );
   }
 

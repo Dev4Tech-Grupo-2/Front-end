@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card card-user" style="width: auto">
       <div class="card-header">
-        <h5 class="card-title">Cadastrar Aula</h5>
+        <h5 class="card-title">Atualizar Aula</h5>
       </div>
       <div class="card-body" style="min-height: 0px">
         <form [formGroup]="formClassUp">
@@ -30,8 +30,11 @@
                   id="teacherId"
                   [(ngModel)]="teachers"
                 >
-                  <option>
-                    {{ class.teacher.name }}
+                  <option
+                    *ngFor="let teacher of teachers"
+                    value="{{ teacher.id }}"
+                  >
+                    {{ teacher.name }}
                   </option>
                 </select>
               </div>
@@ -44,7 +47,7 @@
                 (click)="onSubmit()"
                 class="btn btn-primary btn-round"
               >
-                Cadastrar
+                Save
               </button>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Teacher } from 'app/features/teacher/model/teacher.model';
+import { ApiResponse } from 'app/shared/ApiResponse';
 import { ClassesService } from 'app/shared/services/classes.service';
 import { TeachersService } from 'app/shared/services/teachers.service';
 
@@ -32,8 +33,9 @@ export class UpdateClassComponent implements OnInit {
     private activedRoute: ActivatedRoute,
     private teachersService: TeachersService,
     private classesService: ClassesService,
+    private teachersSerice: TeachersService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.idClass = this.activedRoute.snapshot.params["id"];
@@ -41,6 +43,9 @@ export class UpdateClassComponent implements OnInit {
     this.classesService.getById(this.idClass).subscribe((resp) => {
       this.class = resp;
     });
+    this.teachersSerice.getTeachers().subscribe((resp: ApiResponse) => {
+      this.teachers = resp.content
+    })
   }
 
   onSubmit() {
@@ -48,11 +53,13 @@ export class UpdateClassComponent implements OnInit {
   }
 
   updateClass() {
+
     this.classesService
       .update(this.idClass, this.formClassUp.value)
       .subscribe((res) => {
         alert("Aula atualizada com sucesso!");
         this.router.navigateByUrl("/admin-page/create-class");
-      });
+      },
+        () => alert("Não foi possível atualizar, professor ou série já estão associados a uma aula :("));
   }
 }
